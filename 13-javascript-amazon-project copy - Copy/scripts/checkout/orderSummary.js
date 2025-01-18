@@ -175,6 +175,23 @@ let cartSummaryHTML = ''
         });
       });
 
+
+
+    if (cart.cartItems < 1) {
+      document.querySelector('.js-order-summary').innerHTML =
+        `
+        <div class="empty-cart">
+        <p class="test">Your amazon cart is empty</p>
+        <button class="buy-items button-primary js-buy-items">Buy Items</button>
+        </div>
+        `;
+
+        document.querySelector('.js-buy-items')
+        .addEventListener('click', () => {
+          window.location.href = 'amazon.html'
+        });
+    }
+
   }
 
 

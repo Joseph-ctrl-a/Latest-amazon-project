@@ -106,7 +106,4 @@ import { cart } from "../data/cart-class.js";
 
   if (window.location.pathname.includes('orders.html')) {
   renderOrders();
-
-
-
 }
