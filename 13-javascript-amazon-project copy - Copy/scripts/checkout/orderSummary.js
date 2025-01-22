@@ -1,5 +1,5 @@
 import { cart } from '../../data/cart-class.js';
-import { getProduct } from "../../data/products.js"
+import { getProduct} from "../../data/products.js"
 import { formatCurrency } from "../utils/money.js";
 import { deliveryOptions, getDelieveryOption, calcuateDeliveryDate } from "../../data/deliveryOptions.js";
 import { renderPaymentSummary } from './paymentSummary.js';
@@ -7,10 +7,10 @@ import { renderCheckoutHeader } from './checkoutHeader.js';
 let cartSummaryHTML = ''
 
 
-  export function renderOrderSummary() {
+  export  function renderOrderSummary() {
     renderCheckoutHeader();
     cartSummaryHTML= ''
-    cart.cartItems.forEach((cartItem) => {
+    cart.cartItems.forEach(cartItem => {
     const {productId} = cartItem;
       const {deliveryOptionId} = cartItem
       const matchingProduct = getProduct(productId);

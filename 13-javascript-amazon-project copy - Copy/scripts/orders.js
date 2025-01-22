@@ -13,7 +13,6 @@ import { cart } from "../data/cart-class.js";
   orders.forEach(order => {
 
     const orderTimeString = dayjs(order.orderTime).format('MMMM D');
-    
 
       function generateOrdersHTML(order) {
         let orderProductHTML = '';
@@ -21,8 +20,9 @@ import { cart } from "../data/cart-class.js";
         order.products.forEach(product => {
 
           const {productId} = product;
+          
           const matchingProduct = getProduct(productId);
-          const deliveryDate = getDeliveryDate(product)
+          const deliveryDate = getDeliveryDate(product).deliveryDate
           product.estimatedDeliveryTime = deliveryDate;
           orderProductHTML+= `
             <div class="product-image-container">
@@ -39,14 +39,14 @@ import { cart } from "../data/cart-class.js";
                   <div class="product-quantity">
                     Quantity: ${product.quantity}
                   </div>
-                  <button class="buy-again-button button-primary">
+                  <button class="buy-again-button button-primary js-buy-again-button" data-product-id="${matchingProduct.id}">
                     <img class="buy-again-icon" src="images/icons/buy-again.png">
-                    <span class="buy-again-message js-buy-again-message" data-product-id="${matchingProduct.id}">Buy it again</span>
+                    <span class="buy-again-message">Buy it again</span>
                   </button>
                 </div>
     
                 <div class="product-actions">
-                  <a href="tracking.html">
+                  <a href="tracking.html?orderId=${order.id}&productId=${matchingProduct.id}">
                     <button class="track-package-button button-secondary">
                       Track package
                     </button>
@@ -92,7 +92,7 @@ import { cart } from "../data/cart-class.js";
   cart.updateCartQuantity('.js-cart-quantity')
   document.querySelector('.js-orders-grid').innerHTML = orderHTML;
   
-  document.querySelectorAll('.js-buy-again-message').forEach(message => {
+  document.querySelectorAll('.js-buy-again-button').forEach(message => {
     message.addEventListener('click', () => {
         const {productId} = message.dataset;
         cart.addToCart(productId)
