@@ -4,7 +4,7 @@ export function renderCheckoutHeader() {
   const headerHTML = `
       <div class="header-content">
       <div class="checkout-header-left-section">
-        <a href="amazon.html">
+        <a href="index.html">
           <img class="amazon-logo" src="images/amazon-logo.png">
           <img class="amazon-mobile-logo" src="images/amazon-mobile-logo.png">
         </a>
@@ -18,9 +18,6 @@ export function renderCheckoutHeader() {
         <img src="images/icons/checkout-lock-icon.png">
       </div>
     </div> 
-  `
-  document.querySelector('.js-checkout-header')
-    .innerHTML = headerHTML;
+  `;
+  document.querySelector(".js-checkout-header").innerHTML = headerHTML;
 }
-
-
